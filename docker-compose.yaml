@@ -1,0 +1,127 @@
+version: '3.9'
+services:
+    flwr_server:
+        build:
+            context: flwr_server
+            # target: builder
+        privileged: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.5
+        ports:
+            - '4024:4024'
+        dns:
+            - 8.8.8.8
+    flwr_client_1:
+        build:
+            context: flwr_client
+            # target: builder
+        privileged: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.6
+        ports:
+            - '4025:4024'
+        dns:
+            - 8.8.8.8
+        # depends_on:
+        #     - immudb_1
+
+    flwr_client_2:
+        build:
+            context: flwr_client
+            # target: builder
+        privileged: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.7
+        ports:
+            - '4026:4024'
+        dns:
+            - 8.8.8.8
+    # depends_on:
+    #     - immudb_2
+
+    flwr_client_3:
+        build:
+            context: flwr_client
+            # target: builder
+        privileged: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.8
+        ports:
+            - '4027:4024'
+        dns:
+            - 8.8.8.8
+
+    flwr_client_4:
+        build:
+            context: flwr_client
+            # target: builder
+        privileged: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.9
+        ports:
+            - '4028:4024'
+        dns:
+            - 8.8.8.8
+
+    flwr_client_5:
+        build:
+            context: flwr_client
+            # target: builder
+        privileged: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.10
+        ports:
+            - '4029:4024'
+        dns:
+            - 8.8.8.8
+
+    flwr_client_6:
+        build:
+            context: flwr_client
+            # target: builder
+        privileged: true
+        networks:
+            net-10.9.0.0:
+                ipv4_address: 10.9.0.11
+        ports:
+            - '4030:4024'
+        dns:
+            - 8.8.8.8
+
+networks:
+    net-10.9.0.0:
+        name: net-10.9.0.0
+        ipam:
+            config:
+                - subnet: 10.9.0.0/24
+    # depends_on:
+    #     - immudb_3
+    # immudb_1:
+    #     image: codenotary/immudb:latest
+    #     restart: always
+    #     volumes:
+    #         - x
+    #     environment:
+    #         - name=value
+
+    # immudb_2:
+    #     image: codenotary/immudb:latest
+    #     restart: always
+    #     volumes:
+    #         - x
+    #     environment:
+    #         - name=value
+
+    # immudb_3:
+    #     image: codenotary/immudb:latest
+    #     restart: always
+    #     volumes:
+    #         - x
+    #     environment:
+    #         - name=value
